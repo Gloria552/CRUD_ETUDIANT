@@ -8,150 +8,150 @@
 </head>
 
 <style>
-/* Réinitialisation */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  /* Réinitialisation */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
 
-/* Bouton principal pour ouvrir le formulaire */
-#openModalButton {
-  padding: 10px 20px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.3s;
-}
+  /* Bouton principal pour ouvrir le formulaire */
+  #openModalButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+  }
 
-#openModalButton:hover {
-  background-color: #0056b3;
-}
+  #openModalButton:hover {
+    background-color: #0056b3;
+  }
 
-/* Styles du modal */
-.modal {
-  display: none; /* Caché par défaut */
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
-}
+  /* Styles du modal */
+  .modal {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
 
-.modal-content {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 20px;
-  border-radius: 10px;
-  width: 350px;
-  position: relative;
-}
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    position: relative;
+  }
 
-/* Bouton de fermeture */
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  cursor: pointer;
-}
+  /* Bouton de fermeture */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
 
-/* Titre */
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+  /* Titre */
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-/* Groupes de champs */
-.input-group {
-  position: relative;
-  margin-bottom: 20px;
-}
+  /* Groupes de champs */
+  .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
 
-/* Label en haut à droite pour chaque input */
-/* Le fond blanc et un z-index permettent de masquer la bordure de l'input sous le texte */
-.input-group label {
-  position: absolute;
-  top: -12px;
-  left: 10px;
-  background-color: #fff;
-  padding: 0 5px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #555;
-  z-index: 1;
-}
+  /* Label en haut à droite pour chaque input */
+  /* Le fond blanc et un z-index permettent de masquer la bordure de l'input sous le texte */
+  .input-group label {
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background-color: #fff;
+    padding: 0 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    z-index: 1;
+  }
 
-/* Champs de formulaire (input, select) */
-.input-group input,
-.input-group select {
-  width: 100%;
-  padding: 8px;
-  padding-top: 22px; /* Pour laisser de l'espace au label */
-  border: 1px solid #ccc;
-  border-radius: 1.5rem;
-  font-size: 14px;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s;
-}
+  /* Champs de formulaire (input, select) */
+  .input-group input,
+  .input-group select {
+    width: 100%;
+    padding: 8px;
+    padding-top: 22px; /* Pour laisser de l'espace au label */
+    border: 1px solid #ccc;
+    border-radius: 1.5rem;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+  }
 
-.input-group input:focus,
-.input-group select:focus {
-  border-color: #007bff;
-  outline: none;
-  
-}
+  .input-group input:focus,
+  .input-group select:focus {
+    border-color: #007bff;
+    outline: none;
+    
+  }
 
-/* Bouton de soumission */
-input[type="submit"] {
-  width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+  /* Bouton de soumission */
+  input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
 
-input[type="submit"]:hover {
-  background-color: #0056b3;
-}
-button {
-  padding: 12px;
-  background-color: #007bff;
-  border: none;
-  
-  border-radius: 1.5rem;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  button {
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    
+    border-radius: 1.5rem;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
 
-  transition: background-color 0.3s;
-  width: 100%;
-  border: none;
-}
-button[type="submit"]:hover {
-  background-color: #0056b3;
-}
+    transition: background-color 0.3s;
+    width: 100%;
+    border: none;
+  }
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
 
 </style>
 <body>

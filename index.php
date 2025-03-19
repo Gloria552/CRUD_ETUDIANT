@@ -17,16 +17,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-
+    
     <title>Doc</title>
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="js/bootstrap.min.js">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .modal-content {
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .modal-header {
+            border-bottom: none;
+        }
+        .modal-body input {
+            padding-left: 15px; /* Garde un padding à gauche pour le texte */
+            padding-right: 15px;
+            padding-top: 12px; /* Ajoute de l'espace en haut pour l'input */
+            padding-bottom: 10px;
+            border-radius: 25px;
+            border: 1px solid #ced4da;
+  }
+  
+    
+        .btn-primary {
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .form-group {
+            position: relative;
+            margin-bottom: 0 rem;
+        }
+        .form-group label {
+            position: absolute;
+            top: 0; /* Réduit la marge supérieure entre le label et l'input */
+
+            left: 15px;
+            background: white;
+            padding: 0 5px;
+            font-weight: 100;
+            font-size: 14px;
+        }
+        .form-control {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+
+        
+        
+   
+    </style>
 
    
   </head>
@@ -54,14 +112,11 @@
                         <img alt="item5" loading="lazy" width="10" height="6" decoding="async" data-nimg="1" class="" src="image/Path.svg" style="color: transparent;">
                     </div>
                       <!-- Bouton d'ajout d'élève -->
-                       <!--  <button id="openModalButton" class="text-center ml-96 justify-center items-center px-1 flex bg-primary rounded-3xl w-[200px] h-[40px]">
-                            <span class="font-urbanist text-center text-[14px] text-white font-semibold leading-[20px]">Ajouter un élève</span>
-                        </button> -->
-
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#monModal" class="text-center ml-96 justify-center items-center px-1 flex bg-primary rounded-3xl w-[200px] h-[40px]">
-                            <span class=" text-center   text-white font-semibold ">Ajouter un élève </span>
-                        </button>
-
+  
+                    <button class="btn btn-primary text-center ml-96 justify-center items-center px-1 flex bg-primary rounded-3xl w-[200px] h-[40px] " data-bs-toggle="modal" data-bs-target="#addAdminModal">
+                        <span class=" text-center   text-white font-semibold ">Ajouter un élève </span>
+                    </button>
+                     
                 </div>
 
                 <div class="flex items-center bg-white border border-gray h-[40px] rounded-full px-2 shadow-sm">
@@ -69,40 +124,9 @@
                     <input placeholder="Rechercher un élève" class="w-[320px] font-Urbanist text-[12px] font-normal leading-[19.2px] focus:outline-none" type="text">
                     <img alt="setting" loading="lazy" width="24" height="24" decoding="async" data-nimg="1" class="" src="image/setting-3.svg" style="color: transparent;">
                 </div>
+
             </div>
 
-
-            <!-- Modal -->
-        <!-- Formulaire modal -->
-        <div class="modal" id="monModal">
-                <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Ajouter un élève</h2>
-                <form action="trait_ajout.php" method="post" enctype="multipart/form-data" >
-                    <div class="input-group">
-                    <label for="nom">Nom</label>
-                    <input type="text" id="nom" name="nom" placeholder="Définir le nom de l'élève">
-                    </div>
-
-                    <div class="input-group">
-                    <label for="prenom">Prénom</label>
-                    <input type="text" id="prenom" name="prenom" placeholder="Définir le prénom de l'élève">
-                    </div>
-
-
-                    <div class="input-group" >
-                    <label for="photo">Photo</label>
-                    <input type="file" id="photo" name="photo" accept="image/*">
-                    </div>
-
-                    
-
-
-                    <!-- Bouton de soumission -->
-                    <button type="submit" name="submit" class="btn btn-primary " style="border-radius: 1.5rem;">Ajouter élève</button>
-                </form>
-                </div>
-        </div>
 
             <hr class="mt-8 border-2 border-gray">
             
@@ -160,33 +184,45 @@
             </div>
         </aside>
 
+         <!-- Modal d'ajout d'admin -->
+    <div class="modal fade" id="addAdminModal" tabindex="-1" aria-labelledby="addAdminModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h2 class="modal-title mx-auto fw-bold" id="addAdminModalLabel">Ajouter un élève</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="trait_ajout.php" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="nom" >Nom de l'élève</label>
+                            <input type="text"  name ="nom" class="form-control" id="nom" placeholder="Nom de l'élève">
+                        </div>
+                        <div class="mb-3">
+                            <label for="prenom" >Prénom de l'élève</label>
+                            <input type="text"name ="prenom " class="form-control" id="prenom" placeholder="Prénom de l'élève">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email"   >Adresse e-mail de l'élève</label>
+                            <input type="email"name ="email" class="form-control" id="email" placeholder="Adresse e-mail de l'élève">
+                        </div>
+                        <div class="mb-3" >
+                            <label for="photo"  >Photo</label>
+                            <input class="form-control" name ="photo" type="file" id="photo" name="photo" accept="image/*">
+                        </div> 
+
+                    </form>
+                </div>
+                <div class="modal-footer border-0">
+
+                <button type="submit" name="submit" class="btn btn-primary w-100">Ajouter élève</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<!-- Script JavaScript pour ouvrir/fermer le formulaire -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("userModal");
-    const openModalButton = document.getElementById("openModalButton");
-    const closeModalButton = document.getElementById("closeModalButton");
-
-    // Ouvrir le modal au clic sur le bouton
-    openModalButton.addEventListener("click", () => {
-        modal.showModal();
-    });
-
-    // Fermer le modal au clic sur le bouton de fermeture
-    closeModalButton.addEventListener("click", () => {
-        modal.close();
-    });
-
-    // Fermer le modal en cliquant en dehors
-    window.addEventListener("click", (event) => {
-        if (event.target === modal) {
-            modal.close();
-        }
-    });
-    });
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
     </body>
