@@ -16,31 +16,48 @@
 
         </head>
         <body>
-            <div class="container mt-5">
-                <div class="row">
-                    <?php
-                    $count = 0;
-                    while ($eleve = mysqli_fetch_assoc($execution)) {
-                        // Nouvelle ligne pour chaque groupe de 3 cartes
-                        if ($count % 4 == 0) {
-                            echo '<div class="w-100"></div>';
-                        }
+        <table class= "table" border=" 2px" >
+            <thead>
+                <tr>
+                    <th>ELEVE</th>
+                    <th>Adresse e-mail</th>
+                    <th>Statut</th>
+                    
+                    
+                    <th colspan="2"  class="text-center">Action</th>
 
-                        echo '<div class="col-md-4 mb-4 br-50">';
-                        echo '    <div class="card">';
-                        echo "        <img src='image/{$eleve['photo']}' class='card-img-top img-fluid p-0' style='height:200px; object-fit:cover;' alt='img'>";
-                        echo '        <div class="card-body">';
-                        echo "            <h5 class='card-title'>{$eleve['nom']}.{$eleve['prenom']}</h5>";
-                        
-                        echo "            <p class='card-text'>Email : {$eleve['email']}</p>";
-                        echo '        </div>';
-                        echo '    </div>';
-                        echo '</div>';
 
-                        $count++;
-                    }
-                    ?>
-                </div>
-            </div>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+                <?php
+                //tableau dynamique
+                while($etudiant=mysqli_fetch_assoc($execute))//lire la premiere ligne
+                {
+
+                    echo"<tr>";//ligne
+
+                            
+                            echo"<td>".$eleve['nom']." ". $etudiant['prenom']."</td>";
+                            echo"<td>".$eleve['email']."</td>";
+                            echo"<td>".$eleve['statut']."</td>";
+
+
+                            echo"<td> <a href='modifier.php?id=".$eleve['id']."'>  Modifier  </a> </td>";
+                            echo"<td> <a href='supprimer.php?id=".$eleve['id']."'>  supprimer  </a> </td>";
+
+
+                    echo"</tr>";
+
+
+
+                }
+                ?>
+            </tbody>
+
+        </table>
         </body>
     </html>

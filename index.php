@@ -1,5 +1,5 @@
 <?php
-    include 'connexion.php';
+/*     include 'connexion.php';
 
     // Exécuter la requête et vérifier les erreurs
     $requete = "SELECT * FROM eleve";
@@ -7,7 +7,7 @@
 
     if (!$execution) {
         die("Erreur SQL : " . mysqli_error($connect));
-    }
+    } */
 ?>
 
 <!doctype html>
@@ -51,36 +51,60 @@
             padding-top: 12px; /* Ajoute de l'espace en haut pour l'input */
             padding-bottom: 10px;
             border-radius: 25px;
-            border: 1px solid #ced4da;
-  }
+            border: 1px solid #EAF7FC;
+            color: #ECF9E8;
+        }
   
     
         .btn-primary {
             border-radius: 25px;
             padding: 10px 20px;
             font-weight: bold;
-            font-size: 16px;
-        }
-        .form-group {
-            position: relative;
-            margin-bottom: 0 rem;
-        }
-        .form-group label {
-            position: absolute;
-            top: 0; /* Réduit la marge supérieure entre le label et l'input */
-
-            left: 15px;
-            background: white;
-            padding: 0 5px;
-            font-weight: 100;
             font-size: 14px;
         }
-        .form-control {
-            padding-left: 15px;
-            padding-right: 15px;
+        .form-group{
+            position: relative;
+            margin-bottom: 1.5rem; /* Ajoute un espace entre les champs */
+        }
+        .form-select {
+            position: relative;
+            margin-bottom: 1.5rem; /* Ajoute un espace entre les champs */
+            border-radius: 1.5rem;
+        }
+        .form-select label
+         {
+            position: absolute;
+            
+            top: -13px;
+            left: 15px;
+            background: white;
+            padding: 5 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #9FA8BC;
         }
 
+        .form-group label
+         {
+            position: absolute;
+            
+            top: -12px;
+            left: 15px;
+            background: white;
+            padding: 5 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #9FA8BC;
+        }
 
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 25px;
+            border: 1px solid #EAF7FC;
+            font-size: 12px;
+
+        }
         
         
    
@@ -128,7 +152,7 @@
             </div>
 
 
-            <hr class="mt-8 border-2 border-gray">
+           
             
 
             <!-- menu_coté_gauche -->
@@ -185,44 +209,74 @@
         </aside>
 
          <!-- Modal d'ajout d'admin -->
-    <div class="modal fade" id="addAdminModal" tabindex="-1" aria-labelledby="addAdminModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h2 class="modal-title mx-auto fw-bold" id="addAdminModalLabel">Ajouter un élève</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="trait_ajout.php" method="post" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label for="nom" >Nom de l'élève</label>
-                            <input type="text"  name ="nom" class="form-control" id="nom" placeholder="Nom de l'élève">
-                        </div>
-                        <div class="mb-3">
-                            <label for="prenom" >Prénom de l'élève</label>
-                            <input type="text"name ="prenom " class="form-control" id="prenom" placeholder="Prénom de l'élève">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email"   >Adresse e-mail de l'élève</label>
-                            <input type="email"name ="email" class="form-control" id="email" placeholder="Adresse e-mail de l'élève">
-                        </div>
-                        <div class="mb-3" >
-                            <label for="photo"  >Photo</label>
-                            <input class="form-control" name ="photo" type="file" id="photo" name="photo" accept="image/*">
-                        </div> 
+        <div class="modal fade" id="addAdminModal" tabindex="-1" aria-labelledby="addAdminModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h2 class="modal-title mx-auto fw-bold" id="addAdminModalLabel">Ajouter un élève</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="trait_ajout.php" method="post" id="myForm" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="nom" >Nom de l'élève</label>
+                                <input type="text"  name ="nom" class="form-control" id="nom" placeholder="Nom de l'élève">
+                            </div>
+                            <div class="form-group">
+                                <label for="prenom" >Prénom de l'élève</label>
+                                <input type="text" name ="prenom" class="form-control" id="prenom" placeholder="Prénom de l'élève">
+                            </div>
+                            <div class="form-group">
+                                <label for="email"   >Adresse e-mail de l'élève</label>
+                                <input type="email" name ="email" class="form-control" id="email" placeholder="Adresse e-mail de l'élève">
+                            </div>
+                            <div class="form-group">
+                                <label for="statut">Statut de l'élève</label>
+                                <select name ="statut" class="form-select" id="exampleSelect" aria-label="Sélectionner statut">
+                                    <option value="1">Actif</option>
+                                    <option value="2">Bloqué</option>
+                                 
+                                </select>
+                            </div>
+                            <div class="form-group" >
+                                <label for="photo" >Photo</label>
+                                <input class="form-control"  type="file" id="photo" name="photo" accept="image/*">
+                            </div> 
 
-                    </form>
-                </div>
-                <div class="modal-footer border-0">
 
-                <button type="submit" name="submit" class="btn btn-primary w-100">Ajouter élève</button>
+                            <button id="submitButton" type="submit" name="submit" class="btn btn-primary w-100">Ajouter élève</button>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer border-0">
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const form = document.getElementById("myForm");
+        const inputs = form.querySelectorAll("input");
+        const submitButton = document.getElementById("submitButton");
+
+        function checkFields() {
+            let allFilled = true;
+            inputs.forEach(input => {
+                if (input.value.trim() === "") {
+                    allFilled = false;
+                }
+            });
+            submitButton.disabled = !allFilled;
+            submitButton.style.cursor = allFilled ? "pointer" : "not-allowed";
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener("input", checkFields);
+        });
+    </script>
 
 
     </body>
