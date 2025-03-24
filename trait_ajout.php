@@ -25,8 +25,8 @@ if(isset($_POST['submit']))
         // Vérifier si l'upload a réussi
         if (move_uploaded_file($fichierTemp, $cheminDestination)) {
             // Insérer uniquement le nom du fichier dans la base de données
-            $requete = "INSERT INTO `eleve`(`id`, `prenom`, `nom`, `email`, `photo`, `statut`)
-                        VALUES ('$prenom', '$nom', '$email', '$email', '$nomfichier','$statut')";
+            $requete = "INSERT INTO `eleve`(`prenom`, `nom`, `email`, `photo`, `statut`)
+                        VALUES ('$prenom', '$nom', '$email', '$nomfichier','$statut')";
 
             $execute = mysqli_query($connect, $requete);
 

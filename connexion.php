@@ -1,8 +1,8 @@
 <?php
-    $connect =mysqli_connect("localhost","root","","crud_etudiant");
+    $connect =mysqli_connect("sql12.freesqldatabase.com","sql12768884","ZgZgUFUfBL","sql12768884");
     
     if(!$connect){
-        echo"connexion echoue";
+        echo"connexion echouée";
     } 
 
     
