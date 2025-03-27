@@ -1,13 +1,10 @@
 <?php
-/*     include 'connexion.php';
-
+  include 'connexion.php';
     // Exécuter la requête et vérifier les erreurs
-    $requete = "SELECT * FROM eleve";
-    $execution = mysqli_query($connect, $requete);
+    $requete= "SELECT * FROM eleve";
+    $execute=mysqli_query($connect,$requete);
 
-    if (!$execution) {
-        die("Erreur SQL : " . mysqli_error($connect));
-    } */
+  
 ?>
 
 <!doctype html>
@@ -31,6 +28,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="js/bootstrap.min.js">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 
     <style>
         body {
@@ -63,9 +63,31 @@
             margin-right: 1.5rem;
             font-weight: bold;
             font-size: 14px;
-            
-
         }
+
+        .btn-secondary {
+            border-radius: 25px;
+            padding: 10px 50px;
+            margin-left: 0;
+            font-weight: bold;
+            font-size: 14px;
+            
+        }
+        .btn-orange {
+            border-radius: 25px;
+            padding: 10px 50px;
+            font-weight: bold;
+            font-size: 14px;
+            background-color: #ff8800; /* Orange foncé */
+            color: white;
+        
+        }
+        .btn-orange:hover {
+            background-color: #ff8800; /* Orange plus foncé au survol */
+            
+        }
+     
+
         .form-group{
             position: relative;
             margin-bottom: 1.5rem; /* Ajoute un espace entre les champs */
@@ -117,6 +139,102 @@
             font-size: 14px;
 
         }
+
+        
+
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-left: 0; /* Suppression de la marge */
+            margin-right: 10px; /* Marge à droite pour éloigner un peu de la case à cocher */
+        }
+       
+
+        .checkbox-avatar {
+            display: flex;
+            align-items: center;
+        }
+
+ 
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color:white;
+            margin-top: 300px; /* Ajuste pour laisser l’espace sous .actions-and-search */
+            margin-right: -10px; /* Ajuste pour grappiller encore un peu d’espace */
+            width: calc(100% - 80px); /* Ajustement pour compenser la sidebar */
+            flex-grow: 1; /* Permet au tableau de s'étendre sans dépasser */
+            
+
+        }
+
+
+
+        thead {
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: rgb(231 235 243 / var(--tw-bg-opacity, 1));
+        }
+
+        thead tr:first-child th:first-child {
+            border-top-left-radius: 20px;
+        }
+
+        thead tr:first-child th:last-child {
+            border-top-right-radius: 20px;
+        }
+            
+ 
+
+
+        .table thead th {
+            border: none ;
+            text-align: left !important;
+        }
+       
+        .table tbody tr {
+            border-radius: 10px;
+            background-color:rgb(100, 176, 252);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            
+        }
+        .table tbody td {
+            /* border-bottom: 2px dashed #dee2e6; */
+            border-bottom: 2px dotted #dee2e6;
+            padding: 15px;
+            border-top: none !important;
+           
+            
+        }
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .icon-button i {
+            font-size: 1.2rem;
+        }
+        .edit-icon {
+            color: #6c757d; /* Gris foncé pour modification */
+        }
+        .delete-icon {
+            color: #6c757d; /* Rouge pour suppression */
+        }
+        input[type="checkbox"] {
+            width: 20px; /* Agrandissement de la case à cocher */
+            height: 20px;
+            margin-right: 10px; /* Marge à droite pour espacer de l'avatar */
+        }
+        .badge-success {
+            background-color: #28a745 !important; /* Forcer la couleur verte pour "Actif" */
+        }
+        .badge-danger {
+            background-color: #dc3545 !important; /* Couleur rouge pour "Bloqué" */
+        }
         
 
     </style>
@@ -126,29 +244,30 @@
 
 
     <body>
-
-        <!-- l'entête  -->
-
+        <div class="container">
+            <!-- l'entête  -->
             <header class="flex justify-between items-center mb-8">
-                <h1 class="w-[250px] h-[32px] font-Urbanist text-text text-[30px]  leading-[32px] tracking-[-0.25px] font-medium">Bienvenue, Au collège.</h1>
-                <div class="relative flex gap-x-2">
-                    <img alt="item5"  class=" border rounded-xl h-10 w-10 p-1 border-bg_2  " src="image/Notification Icon.svg" style="color: transparent;">
-                    <img alt="User profile"  class="rounded-full cursor-pointer -mt-4" src="image/Avatar.svg" style="color: transparent;">
-                    <img alt="item5"  class="w-[16px] h-[16] mt-3 cursor-pointer" src="image/Vector.svg" style="color: transparent;">
+                <h5 class="w-100" style="max-width: 250px; height: 32px; font-family: 'Urbanist', sans-serif; color: var(--text); font-size: 30px; line-height: 32px; letter-spacing: -0.25px; font-weight: 500;">Bienvenue, Au collège.</h5>
+                <div class="position-relative d-flex gap-2">
+                    <img alt="item5"  class=" border border-2 rounded-3 h-10 w-10 p-1" style="background-color: #F2F2F2;" src="image/Notification Icon.svg" style="color: transparent;">
+                    <img alt="User profile"  class="rounded-circle cursor-pointer mt-n4" src="image/Avatar.svg" style="color: transparent;">
+                    <img alt="item5"  class="w-4 h-4 mt-3 cursor-pointer" src="image/Vector.svg" style="color: transparent;">
                 </div>
             </header>
+
+            
             <!-- sous_entête -->
 
             <div class="actions-and-search">
-                <div class=" flex   ">
-                    <img width="20" height="20"   class="w-[24px] mt-1 h-[24px]" src="image/Rectangle.svg" style="color: transparent;">
-                    <div class="items-center flex ml-4 justify-between py-4 px-3 bg-gray rounded-3xl w-[200px] h-[12px] ">
+                <div class="d-flex align-items-center justify-content-between w-100">
+                    <img width="20" height="20"  src="image/Rectangle.svg">
+                    <div class="d-flex align-items-center bg-gray  rounded-pill px-3 py-1" style="width: 200px; height: 35px;">
                         <span class="font-urbanist  text-[12px] text-light_text font-semibold ">Sélectionner une action</span>
-                        <img width="10" height="6"   class="" src="image/Path.svg" style="color: transparent;">
+                        <img width="10" height="6" src="image/Path.svg" style="color: transparent;">
                     </div>
-                      <!-- Bouton d'ajout d'élève -->
-  
-                    <button class="btn btn-primary text-center ml-96 mt-6 mb-6 justify-center items-center px-1 flex bg-primary rounded-3xl w-[200px] h-[40px] " data-bs-toggle="modal" data-bs-target="#addAdminModal">
+                    
+                    <!-- Bouton d'ajout d'élève -->
+                    <button class="btn btn-primary text-center ml-96 mt-6 mb-6 justify-center items-center px-1 flex bg-primary rounded-3xl w-[200px] h-[40px]" data-bs-toggle="modal" data-bs-target="#addAdminModal">
                         <span class=" text-center   text-white font-semibold ">Ajouter un élève </span>
                     </button>
                      
@@ -160,17 +279,143 @@
                     <img alt="setting"  width="24" height="24"   class="" src="image/setting-3.svg" style="color: transparent;">
                 </div>
 
+            </div>
 
-                
+            <div class="container mt-4">
+       
+                <table class="table text-center">
+                    <thead class="table-light">
+                        <tr>
+                            
+                            <th>Étudiant</th>
+                            <th>Email</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if (isset($execute)) {
+                            while ($eleve = mysqli_fetch_assoc($execute)) { // lire chaque ligne
+                                $cheminImage = "image/" . htmlspecialchars($eleve['photo']);
+                                
+                                echo "<tr>";
+                                // Utilisation d'une div avec flex pour aligner le checkbox et la photo de profil
+                                echo "<td>
+                                    <div class='checkbox-avatar'>
+                                        <a href='#' data-bs-toggle='modal' data-bs-target='#photoModal" . $eleve['id'] . "'>
+                                            <img src='" . $cheminImage . "' alt='Photo de profil' class='avatar' >
+                                        </a>
+                                        <strong>" . htmlspecialchars($eleve['nom']) . " " . htmlspecialchars($eleve['prenom']) . "</strong>
+                                    </div>
+                                </td>";
+                                echo "<td>" . htmlspecialchars($eleve['email']) . "</td>";
 
+                                // Application correcte de la classe badge selon le statut
+                                $statut = htmlspecialchars($eleve['statut']);
+                                $badgeClass = ($statut == 'Actif') ? 'badge-success' : 'badge-danger';
+                                echo "<td><span class='badge $badgeClass'>" . $statut . "</span></td>";
+                                echo "<td>";
+                                
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#modifierModal" . $eleve['id'] . "' class='icon-button'><img src='image/edit.svg' alt='Modifier' width='20' height='20'></a>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal" . $eleve['id'] . "' class='icon-button'><img src='image/trash.svg' alt='Supprimer' width='20' height='20'></a>";
+                                echo "</td>";
+                                echo "</tr>";
+
+                                // Modal pour afficher uniquement la photo
+                                echo "
+                                    <div class='modal fade' id='photoModal" . $eleve['id'] . "' tabindex='-1' aria-labelledby='photoModalLabel" . $eleve['id'] . "' aria-hidden='true'>
+                                        <div class='modal-dialog modal-dialog-centered'>
+                                            <div class='modal-content'>
+                                                <div class='modal-header'>
+                                                    <h5 class='modal-title mx-auto' id='photoModalLabel" . $eleve['id'] . "'>Photo de " . htmlspecialchars($eleve['nom']) . " " . htmlspecialchars($eleve['prenom']) . "</h5>
+                                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Fermer'></button>
+                                                </div>
+                                                <div class='modal-body text-center'>
+                                                    <img src='" . $cheminImage . "' alt='Photo de profil' class='img-fluid' style='max-width:100%; border-radius:10px;'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>";
+
+
+                                // Modale de modification
+                                echo "
+                                    <div class='modal fade' id='modifierModal" . $eleve['id'] . "' tabindex='-1' aria-labelledby='modifierModalLabel" . $eleve['id'] . "' aria-hidden='true'>
+                                        <div class='modal-dialog'>
+                                            <div class='modal-content'>
+                                                <div class='modal-header'>
+                                                    <h5 class='modal-title mx-auto fw-bold font-urbanist' id='modifierModalLabel" . $eleve['id'] . "'>Modifier un élève</h5>
+                                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Fermer'></button>
+                                                </div>
+                                                <div class='modal-body'>
+                                                    <form action='trait_modifier.php' method='POST'>
+                                                        <input type='hidden' name='id' value='" . $eleve['id'] . "'>
+                                                        <div class='form-group'>
+                                                            <label for='nom' >Nom</label>
+                                                            <input type='text' class='form-control' name='nom' value='" . htmlspecialchars($eleve['nom']) . "' required>
+                                                        </div>
+                                                        <div class='form-group'>
+                                                            <label for='prenom' >Prénom</label>
+                                                            <input type='text' class='form-control' name='prenom' value='" . htmlspecialchars($eleve['prenom']) . "' required>
+                                                        </div>
+                                                        <div class='form-group'>
+                                                            <label for='email' >Email</label>
+                                                            <input type='email' class='form-control' name='email' value='" . htmlspecialchars($eleve['email']) . "' required>
+                                                        </div>
+                                                        <div class='form-group'>
+                                                            <label for='statut' >Statut</label>
+                                                            <select name='statut' class='form-select' id='statut'>
+                                                                <option value='" . htmlspecialchars($eleve['statut']) . "'>" . htmlspecialchars($eleve['statut']) . "</option>
+                                                                <option value='Actif'>Actif</option>
+                                                                <option value='Bloqué'>Bloqué</option>
+                                                                
+                                                            </select>
+                                                        </div>
+                                                        <div class='form-group' >
+                                                            <label for='photo' >Photo</label>
+                                                            <input class='form-control'  type='file'  id='photo' name='photo'  value='" . htmlspecialchars($eleve['photo']) . "' accept='image/*'>
+                                                        </div> 
+                                                        <button type='submit'  name='submit'  class='btn btn-primary  w-50 d-block mx-auto'>Modifier</button>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>";
+
+                                // Modal de suppresion
+
+                                echo "
+                                <div class='modal fade' id='deleteModal" . $eleve['id'] . "' tabindex='-1' aria-labelledby='deleteModalLabel" . $eleve['id'] . "' aria-hidden='true'>
+                                    <div class='modal-dialog'>
+                                        <div class='modal-content'>
+                                            <div class='modal-header'>
+                                                <h5 class='modal-title' id='deleteModalLabel" . $eleve['id'] . "'>Supprimer un élève</h5>
+                                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Fermer'></button>
+                                            </div>
+                                            <div class='modal-body'>
+                                                Voulez-vous supprimer l'élève <strong>" . htmlspecialchars($eleve['nom']) . " " . htmlspecialchars($eleve['prenom']) . "</strong> ?
+                                            </div>
+                                            <div class='modal-footer d-flex justify-content-between'>
+                                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Annuler</button>
+                                                <a href='supprimer.php?id=" . $eleve['id'] . "' class='btn btn-orange'>Supprimer</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>";
+                                
+                                
+                            }
+                        }
+                        ?>
+                    </tbody>
+
+                </table>
             </div>
             <hr class="mt-8 border-2 border-gray">
 
-            
-
-
-           
-            
+        </div>
 
             <!-- menu_coté_gauche -->
 
@@ -203,7 +448,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header border-0">
-                        <h1 class="modal-title mx-auto fw-bold font-urbanist" id="addAdminModalLabel">Ajouter un élève</h1>
+                        <h5 class="modal-title mx-auto fw-bold font-urbanist" id="addAdminModalLabel">Ajouter un élève</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -232,18 +477,15 @@
                                 <label for="photo" >Photo</label>
                                 <input class="form-control"  type="file" id="photo" name="photo" accept="image/*">
                             </div> 
-
-
                             <button id="submitButton" type="submit" name="submit" class="btn btn-primary  w-50 d-block mx-auto">Ajouter élève</button>
-
                         </form>
                     </div>
-                    <div class="modal-footer border-0">
-
-                    </div>
+                    
                 </div>
             </div>
         </div>
+
+ 
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -266,6 +508,25 @@
             inputs.forEach(input => {
                 input.addEventListener("input", checkFields);
             });
+
+            // Fonction pour ouvrir le modal de modification
+            function ouvrirModalModification(id) {
+                // Récupérer le modal spécifique en fonction de l'ID de l'élève
+                var modal = new bootstrap.Modal(document.getElementById('modifierModal' + id));
+                
+                // Afficher le modal
+                modal.show();
+            }
+
+// Ajouter un écouteur d'événements à chaque bouton de modification
+document.querySelectorAll('.btn-modifier').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        var idEleve = btn.getAttribute('data-id');  // On récupère l'ID de l'élève depuis l'attribut `data-id`
+        ouvrirModalModification(idEleve); // Ouvrir le modal pour cet élève
+    });
+});
+
+
 
 
         // pour afficher  le statut de l'eleve

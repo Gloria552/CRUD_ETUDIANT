@@ -31,6 +31,7 @@ if(isset($_POST['submit']))
             $execute = mysqli_query($connect, $requete);
 
             if ($execute) {
+                $message= "votre ajout a été éffectué avec succes !";
                 header('Location: index.php');
                 exit;
             } else {
