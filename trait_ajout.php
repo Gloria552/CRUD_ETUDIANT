@@ -1,11 +1,12 @@
 <?php
 include 'connexion.php';
 
-/* echo "<pre>";
+/*  echo "<pre>";
 print_r($_POST);
 print_r($_FILES);
 echo "</pre>";
-exit(); */
+exit();  */
+
 
 if(isset($_POST['submit'])) 
 {
@@ -13,17 +14,19 @@ if(isset($_POST['submit']))
     $nom = $_POST['nom'];
     $email = $_POST['email'];
     $statut = $_POST['statut'];
+    $photo=$_FILES['photo'];
+    $nomfichier=$photo['name'];
+    $fichierTemp=$photo['tmp_name'];
+    $dossier="image/";
+    $cheminDestination=$dossier.$nomfichier;
+    move_uploaded_file($fichierTemp,$cheminDestination);
 
-    $photo = $_FILES['photo'];
-    $nomfichier = basename($photo['name']);
-    $fichierTemp = $photo['tmp_name'];
-    $dossier = "image/";
-    $cheminDestination = $dossier . $nomfichier;
+    if (move_uploaded_file($fichierTemp, $cheminDestination)) {
+        // continue l'insertion
+    } else {
+        echo "Erreur lors du téléchargement de l'image.";
+    }
 
-    // Vérifiez si les champs ne sont pas vides
-    if (!empty($prenom) && !empty($nom) && !empty($email) && !empty($statut)) {
-        // Vérifier si l'upload a réussi
-        if (move_uploaded_file($fichierTemp, $cheminDestination)) {
             // Insérer uniquement le nom du fichier dans la base de données
             $requete = "INSERT INTO `eleve`(`prenom`, `nom`, `email`, `photo`, `statut`)
                         VALUES ('$prenom', '$nom', '$email', '$nomfichier','$statut')";
@@ -31,15 +34,12 @@ if(isset($_POST['submit']))
             $execute = mysqli_query($connect, $requete);
 
             if ($execute) {
-                $message= "votre ajout a été éffectué avec succes !";
-                header('Location: index.php');
-                exit;
+                $message = "Votre ajout a été effectué avec succès !";
+                header('Location: index.php?success=1&message=' . urlencode($message));
+                exit();
             } else {
                 echo "Erreur lors de l'ajout : " . mysqli_error($connect);
             }
-        } 
-    } else {
-        echo "Tous les champs doivent être remplis.";
-    }
+   
 }
 ?>

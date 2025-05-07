@@ -1,0 +1,282 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+}
+.bod{
+    background-color: #f0f1f8;
+}
+.margintop{
+    margin-top: 120px;
+}
+
+.border-r {
+    border-right: 5px !important;
+    color: black !important;
+}
+
+.hl{
+    width: 250px; 
+    font-size: 30px;
+    
+}
+
+.im{
+    margin-left: 70%;
+}
+.mt-10{
+    margin-top: 1rem;
+}
+
+.bouton{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-right: auto;
+    width: 100%;
+    border: 0px;
+
+}
+
+
+ 
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    background: white;
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 10px !important;
+    width: 200px;
+    height: 90px;
+    z-index: 1000;
+}
+.menu-dropdown a{
+    text-decoration: none;
+}
+
+.selectio{
+    display: flex;
+    align-items: center;
+    margin-right: 40%;
+    width: 250px;
+    height: 40px;
+    border-radius: 20px;
+}
+.btn {
+    border-radius: 20px !important;
+    
+    width: 200px;
+    height: 40px;
+}
+.Seach{
+    display: flex;
+    align-items: center;
+    border-radius: 20px ;
+    width: 300px;
+    height: 40px;
+}
+.custom-line {
+    position: absolute;
+    bottom: 60%;
+    left: 150px;
+    width: 88%; /* Ajuste selon besoin */
+    height: 5px ;
+    background-color:rgb(156, 165, 192) ;
+    margin: 20px 0;
+}
+
+
+.modal-content {
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+.modal-header {
+    border-bottom: none;
+}
+.modal-body input {
+    padding-left: 25px; /* Garde un padding à gauche pour le texte */
+    padding-top: 12px; /* Ajoute de l'espace en haut pour l'input */
+    padding-bottom: 10px;
+    border-radius: 25px;
+    border: 1px solid #EAF7FC;
+    color: black; 
+}
+.form-group{
+    position: relative;
+    margin-bottom: 1.5rem; /* Ajoute un espace entre les champs */
+}
+.form-select {
+    margin-bottom: .5rem; /* Ajoute un espace entre les champs */
+    border-radius: 1.5rem;
+}
+.form-select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 25px !important;
+    border: 1px solid #EAF7FC;
+    font-size: 14px;
+    padding-left: 25px; /* Garde un padding à gauche pour le texte */
+}
+.form-select label
+ {
+    position: absolute;
+    
+    top: -13px;
+    left: 15px;
+    background: white;
+    padding: 5 10px;
+    font-weight: 600;
+    color: #9FA8BC;
+}
+.form-group label
+ {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    background: white;
+    padding: 5 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #9FA8BC;
+}
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 25px;
+    border: 1px solid #EAF7FC;
+    font-size: 14px;
+}
+.btn-primary {
+    border-radius: 25px;
+    padding: 10px 50px;
+    margin-right: 1.5rem;
+    font-weight: bold;
+    font-size: 14px;
+}
+.btn-secondary {
+    border-radius: 25px;
+    padding: 10px 50px;
+    margin-left: 0;
+    font-weight: bold;
+    font-size: 14px;
+    
+}
+.btn-orange {
+    border-radius: 25px;
+    padding: 10px 50px;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #ff8800 !important; /* Orange foncé */
+    color: white;
+
+}
+.btn-orange:hover {
+    background-color: #ff8800; /* Orange plus foncé au survol */
+    
+}
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 0; /* Suppression de la marge */
+    margin-right: 10px; /* Marge à droite pour éloigner un peu de la case à cocher */
+}
+.avat {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 0 auto 10px auto; /* centre horizontalement */
+    display: block; /* nécessaire pour margin auto */
+}
+.checkbox-avatar {
+    display: flex;
+    align-items: center;
+}
+table {
+    margin-left: 40px;
+    width: 95% !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color:white;
+    margin-top: 100px; 
+    padding: auto; 
+}
+thead {
+    border-radius: 20px;
+    background-color: rgb(156, 165, 192) 
+}
+thead tr:first-child th:first-child {
+    border-top-left-radius: 20px;
+}
+
+thead tr:first-child th:last-child {
+    border-top-right-radius: 20px;
+}
+.table thead th {
+    border: none ;
+    margin-left: 75px;
+}
+.table tbody tr {
+    border-radius: 10px;
+    background-color:rgb(100, 176, 252);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+ 
+}
+.table tbody td {
+    /* border-bottom: 2px dashed #dee2e6; */
+    border-bottom: 2px dotted #dee2e6;
+    padding: 15px;
+    border-top: none !important;
+
+}
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.icon-button i {
+    font-size: 1.2rem;
+}
+.edit-icon {
+    color: #6c757d; /* Gris foncé pour modification */
+}
+.delete-icon {
+    color: #6c757d; /* Rouge pour suppression */
+}
+
+.badge-success {
+    background-color: #a3f5b6 !important; /* Forcer la couleur verte pour "Passe" */
+    
+}
+.badge-danger {
+    background-color: #f1afb6 !important; /* Couleur rouge pour "Double" */
+}
+
+
+
+.nav_pag{
+    display: flex;
+    position: relative;
+    align-items: end;
+    justify-content: end;
+    top: 95%;
+    padding: 3px;
+
+
+}
+#successMessage {
+    width: 250px; /* Largeur du petit carré */
+    padding: 10px; /* Espacement interne */
+    border-radius: 10px; /* Coins arrondis */
+    text-align: center; /* Texte centré */
+    z-index: 9999; /* S'assurer qu'il soit bien visible */
+    margin: 0 auto 10px auto; /* centre horizontalement */
+    display: block; /* nécessaire pour margin auto */
+}
+
